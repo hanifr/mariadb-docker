@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  mysql:
+    image: mariadb
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    container_name: sql
+    environment:
+      MYSQL_ROOT_PASSWORD: c1vG7R34
+      MYSQL_DATABASE: admin
+      MYSQL_USER: digitalman
+      MYSQL_PASSWORD: c1vG7R34
+      TZ: Asia/Kuala_Lumpur
+    ports:
+      - "3080:3306"
+    networks:
+      - net-backend
+
+networks:
+  net-backend:
+    name: net-exp-db
+
+volumes:
+  db_data:
