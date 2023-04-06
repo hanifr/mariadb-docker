@@ -7,7 +7,7 @@ services:
       - db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
-    container_name: sql
+    container_name: sql-2
     environment:
       MYSQL_ROOT_PASSWORD: c1vG7R34
       MYSQL_DATABASE: admin
@@ -15,13 +15,7 @@ services:
       MYSQL_PASSWORD: c1vG7R34
       TZ: Asia/Kuala_Lumpur
     ports:
-      - "3080:3306"
-    networks:
-      - net-backend
-
-networks:
-  net-backend:
-    name: net-exp-db
+      - "3800:3306"
 
 volumes:
   db_data:
